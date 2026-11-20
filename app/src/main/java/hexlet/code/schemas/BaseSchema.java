@@ -13,7 +13,9 @@ public abstract class BaseSchema<T> {
         return this;
     }
 
-    protected abstract boolean isEmpty(T value);
+    protected boolean isEmpty(T value) {
+        return value == null;
+    }
 
     public boolean isValid(T value) {
         if (isEmpty(value)) {
