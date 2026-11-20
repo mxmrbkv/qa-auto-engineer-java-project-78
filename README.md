@@ -1,38 +1,50 @@
-# Валидатор данных (Java)
+### Hexlet tests and linter status:
+[![Java CI](https://github.com/mxmrbkv/java-project-78/actions/workflows/build.yml/badge.svg)](https://github.com/mxmrbkv/java-project-78/actions)
 
-[![hexlet-check](https://github.com/mxmrbkv/qa-auto-engineer-java-project-78/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/mxmrbkv/qa-auto-engineer-java-project-78/actions)
+# Валидатор данных (Data Validator)
 
-Создание собственной библиотеки для проверки корректности (валидации) данных – отличный способ прокачать навыки проектирования кода, в особенности, объектно-ориентированной архитектуры. Создание правильных иерархий классов, расширяемая архитектура, применение принципов SOLID, использование fluent-интерфейса – все это предстоит делать в проекте
+Библиотека на Java для проверки корректности данных (валидации) с использованием паттерна Fluent Interface.
 
-Учебный проект Хекслета: https://ru.hexlet.io/programs/qa-auto-engineer-java
-Как это должно работать: https://asciinema.org/a/NtQ6xBownxYFN2H8WEffvtcS1
+## Описание
 
-## Стек
+«Валидатор данных» позволяет декларативно описывать правила валидации данных различных типов:
+- Строки (`StringSchema`)
+- Числа (`NumberSchema`)
+- Структуры / Map (`MapSchema`)
 
-- Java
+## Требования
 
-## Установка
+- OpenJDK 21
+- Gradle не ниже 8.7
 
-<!-- Опишите установку: клонирование, зависимости, переменные окружения -->
+## Структура проекта
 
-```bash
-git clone https://github.com/mxmrbkv/qa-auto-engineer-java-project-78.git
-cd qa-auto-engineer-java-project-78
+```text
+├── README.md
+└── app
+    ├── build.gradle.kts
+    ├── gradle
+    │   └── wrapper
+    │       ├── gradle-wrapper.jar
+    │       └── gradle-wrapper.properties
+    ├── gradlew
+    ├── gradlew.bat
+    ├── settings.gradle.kts
+    └── src
+        ├── main
+        │   ├── java
+        │   └── resources
+        └── test
+            ├── java
+            └── resources
 ```
 
-## Использование
+## Команды
 
-<!-- Добавьте примеры запуска и запись asciinema — именно это смотрит работодатель -->
+Все команды сборки выполняются из каталога `app` (или через `make` в корне):
 
----
-
-<details>
-<summary>Автоматические тесты Хекслета</summary>
-
-Тесты запускаются на каждый коммит. За запуск отвечает файл `.github/workflows/hexlet-check.yml` — не удаляйте и не переименовывайте ни его, ни репозиторий.
-
-</details>
-
-## О Хекслете
-
-[Хекслет](https://ru.hexlet.io/) — школа программирования: авторские программы обучения с практикой, поддержкой наставников и реальными проектами, которые остаются в резюме. Этот репозиторий — один из таких проектов.
+- Сборка: `cd app && ./gradlew build`
+- Запуск тестов: `cd app && ./gradlew test`
+- Проверка линтерами: `cd app && ./gradlew check`
+- Применение автоформатирования Spotless: `cd app && ./gradlew spotlessApply`
+- Генерация отчета о покрытии: `cd app && ./gradlew jacocoTestReport`
