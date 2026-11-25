@@ -74,6 +74,16 @@ class StringSchemaTest {
     }
 
     @Test
+    void testContainsWithRequired() {
+        StringSchema schema = validator.string().required().contains("wh");
+
+        assertThat(schema.isValid(null)).isFalse();
+        assertThat(schema.isValid("")).isFalse();
+        assertThat(schema.isValid("what does the fox say")).isTrue();
+        assertThat(schema.isValid("hello world")).isFalse();
+    }
+
+    @Test
     void testContainsOverride() {
         StringSchema schema = validator.string();
 

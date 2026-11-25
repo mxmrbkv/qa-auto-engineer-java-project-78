@@ -187,4 +187,19 @@ class MapSchemaTest {
 
         assertThat(schema.isValid(address)).isTrue();
     }
+
+    @Test
+    void testShapeWithMissingOptionalKey() {
+        MapSchema schema = validator.map();
+
+        Map<String, BaseSchema<?>> schemas = new HashMap<>();
+        schemas.put("name", validator.string().required());
+        schemas.put("age", validator.number().positive());
+
+        schema.shape(schemas);
+
+        Map<String, Object> person = new HashMap<>();
+        person.put("name", "Alice");
+        assertThat(schema.isValid(person)).isTrue();
+    }
 }

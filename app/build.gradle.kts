@@ -1,9 +1,15 @@
 plugins {
-    application
+    `java-library`
     checkstyle
     jacoco
     id("com.diffplug.spotless") version "6.25.0"
     id("com.github.mrsarm.jshell.plugin") version "1.2.1"
+}
+
+java {
+    toolchain {
+        languageVersion.set(JavaLanguageVersion.of(21))
+    }
 }
 
 group = "hexlet.code"
@@ -18,10 +24,6 @@ dependencies {
     testImplementation("org.junit.jupiter:junit-jupiter")
     testImplementation("org.assertj:assertj-core:3.25.3")
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
-}
-
-application {
-    mainClass.set("hexlet.code.App")
 }
 
 tasks.test {
